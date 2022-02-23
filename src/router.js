@@ -58,7 +58,7 @@ const router = (request, response) => {
       } else if (url.includes("api") ){
         let dataXhr = (url.split('/')[2])
         // console.log(dataXhr)
-            https.get(`https://api.unsplash.com/photos/?client_id=wgMDUq6nkl18c9Eop2yezO0e0EB0VMp3rp172jAh_uA&query=${dataXhr}`, (res) => {
+            https.get(`https://imsea.herokuapp.com/api/1?q=${dataXhr}`, (res) => {
                 let data = '';
                 // A chunk of data has been received.
                 res.on('data', (chunk) => {
@@ -67,7 +67,7 @@ const router = (request, response) => {
                 // The whole response has been received. Print out the result.
                 res.on('end', () => {
                   let dataApi = JSON.parse(data)
-                  let unData= dataApi[0]
+                  let unData= dataApi
                   // console.log(dataApi[0].urls.full);
                   response.writeHead(200, { "Content-Type": "application/json" });
                    response.end(JSON.stringify(unData)); //data send to xhr
