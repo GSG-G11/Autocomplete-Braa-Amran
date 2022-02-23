@@ -11,12 +11,14 @@ xhr.onreadystatechange = () => {
     if (xhr.status === 200) {
       const data = JSON.parse(xhr.responseText);
       console.log( data)
-     data.results.forEach(e => {
-         console.log(e)
+     data.results.forEach((e,i) => {
          //datalist
-        const dataOpti = document.createElement('img')
-        dataOpti.src = e
-        dataLi.appendChild(dataOpti);
+         if(i%2===0){
+            const dataOpti = document.createElement('img')
+            dataOpti.src = e
+            dataLi.appendChild(dataOpti);
+         }
+    
      });
 
 
