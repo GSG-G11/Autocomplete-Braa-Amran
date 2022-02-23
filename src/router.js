@@ -2,6 +2,7 @@ const fs = require('fs');
 const path= require('path');
 const querystring = require('querystring');
 const https = require('https');
+const publicHandler = require('./publicHandler')
 
 
 const router = (request, response) => {
@@ -9,43 +10,13 @@ const router = (request, response) => {
     const method = request.method;
     // console.log(url);
     if(url === '/') {
-        const filePath = path.join(__dirname,'..','public','index.html');
-            fs.readFile(filePath, (error, data) => {
-              if (error) {
-             response.writeHead(500)
-             response.end("server error")
-                return;
-              } else {
-                response.writeHead(200, { 'Content-Type': 'text/html' })
-                response.end(data);
-              }
-            })
-      }  else if ( url === "/css/style.css"){
-        const filePath = path.join(__dirname,'..','public','css','style.css');
-        fs.readFile(filePath, (error, data) => {
-          if (error) {
-            response.writeHead(500)
-            response.end("server error")
-            return;
-          } else {
-            response.writeHead(200, { 'Content-Type': 'text/css' })
-            response.end(data);
-          }
-        })
+        publicHandler('/index.html',response)
+      }
+      else if ( url === "/css/style.css"){
+        publicHandler(url,response)
       } 
       else if ( url === "/js/index.js"){
-        const filePath = path.join(__dirname,'..','public','js','index.js');
-        fs.readFile(filePath, (error, data) => {
-          if (error) {
-            response.writeHead(500)
-            response.end("server error")
-            return;
-          } 
-          else {
-            response.writeHead(200, { 'Content-Type': 'text/javasrcipt' })
-            response.end(data);
-          }
-        })
+        publicHandler(url,response)
       }
       else if ( url.includes("cars") && method==='POST'){
         let dataXhr = (url.split('/')[2])
