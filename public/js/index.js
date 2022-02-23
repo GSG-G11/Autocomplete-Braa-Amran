@@ -7,7 +7,6 @@ const input =document.querySelector("#search");
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
             const data = JSON.parse(xhr.responseText);
-            console.log(data)
             for (let carName in data) {
            // use the data from server 
            const dataLi=document.querySelector('#carsList'); //datalist
