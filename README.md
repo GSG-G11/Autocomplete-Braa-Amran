@@ -1,6 +1,6 @@
 # Braa-Emran
 # Braa-Amran-API-project
-- [Live Link](https://autosearch2022.herokuapp.com/)
+- [Live Link](https://autocomplete2022.herokuapp.com/)
 ## ✧ Team members:
 - [Amran Elmasri](https://github.com/amasri88)
 - [Baraa Awni](https://github.com/braaAwni)
