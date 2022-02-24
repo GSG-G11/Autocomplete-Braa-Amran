@@ -41,10 +41,10 @@ const router = (request, response) => {
                     response.writeHead(500)
                     response.end('error server')
                   }else {
-                   let dataJson=JSON.parse(data)
+                   let dataJson=JSON.parse(data)        //cars.json
                    let result =  dataJson.filter((data)=>{
                        return data.Name.toLocaleLowerCase().startsWith(dataXhr.toLocaleLowerCase());
-                   })
+                   })  // return array of object which name is mathed to dataXhr
                    let arr = [];
                    for (let i=0;i<result.length;i++){
                   let aa=  result[i].Name
@@ -52,7 +52,6 @@ const router = (request, response) => {
                    }
                    response.writeHead(200, { "Content-Type": "application/json" });
                    response.end(JSON.stringify(arr)); //data send to xhr
-                   
                   }
               }); 
       } else if (url.includes("api") ){
