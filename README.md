@@ -24,3 +24,4 @@ If the user enters the site, he will see the search part and submit button When 
 - JS
 - Api
 - Node js
+- Jest
